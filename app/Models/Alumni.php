@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Alumni extends Model
 {
@@ -16,6 +15,7 @@ class Alumni extends Model
 
     // Pastikan untuk menambahkan properti `incrementing` dan `keyType`
     public $incrementing = false;  // Menonaktifkan auto-increment untuk ID
+
     protected $keyType = 'string'; // Set key type menjadi string, karena UUID adalah string
 
     protected static function booted()
@@ -24,7 +24,7 @@ class Alumni extends Model
 
         // Generate UUID saat model dibuat
         static::creating(function ($alumni) {
-            if (!$alumni->getKey()) {
+            if (! $alumni->getKey()) {
                 $alumni->id = (string) Str::uuid();  // Generate UUID untuk id
             }
         });

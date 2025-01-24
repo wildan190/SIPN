@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
+use App\Models\Alumni;
 use App\Models\Event;
 use App\Models\Gallery;
-use App\Models\Alumni;
+use App\Models\Post;
 
 class HomeController extends Controller
 {

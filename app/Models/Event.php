@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
 
 class Event extends Model
 {
@@ -13,6 +13,7 @@ class Event extends Model
 
     // Pastikan untuk menambahkan properti `incrementing` dan `keyType`
     public $incrementing = false;  // Menonaktifkan auto-increment untuk ID
+
     protected $keyType = 'string'; // Set key type menjadi string, karena UUID adalah string
 
     protected static function booted()
@@ -21,7 +22,7 @@ class Event extends Model
 
         // Generate UUID saat model dibuat
         static::creating(function ($event) {
-            if (!$event->getKey()) {
+            if (! $event->getKey()) {
                 $event->id = (string) Str::uuid();  // Generate UUID untuk id
             }
         });
@@ -46,7 +47,6 @@ class Event extends Model
     {
         return Carbon::parse($value); // Mengonversi string tanggal menjadi instance Carbon
     }
-
 
     public function getFormattedTimeAttribute()
     {

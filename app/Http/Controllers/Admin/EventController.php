@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,6 +13,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all(); // Ambil semua data event
+
         return view('admin.events.index', compact('events'));
     }
 

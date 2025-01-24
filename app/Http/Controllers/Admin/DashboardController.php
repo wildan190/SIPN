@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Event;
 use Carbon\Carbon;
 
 class DashboardController extends Controller

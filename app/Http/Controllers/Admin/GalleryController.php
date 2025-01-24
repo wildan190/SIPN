@@ -5,17 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
-
     // Menampilkan daftar gallery
     public function index()
     {
         $galleries = Gallery::all(); // Mengambil semua data gallery
+
         return view('admin.galleries.index', compact('galleries'));
     }
 
@@ -37,7 +35,7 @@ class GalleryController extends Controller
         ]);
 
         // Membuat instance model Gallery
-        $gallery = new Gallery();
+        $gallery = new Gallery;
 
         // Menyimpan data lainnya
         $gallery->headline = $request->input('headline');
@@ -64,8 +62,6 @@ class GalleryController extends Controller
         // Redirect dengan pesan sukses
         return redirect()->route('admin.galleries.index')->with('success', 'Gallery created successfully.');
     }
-
-
 
     // Menampilkan detail gallery
     public function show(Gallery $gallery)

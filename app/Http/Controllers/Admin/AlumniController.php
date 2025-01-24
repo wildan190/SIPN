@@ -17,6 +17,7 @@ class AlumniController extends Controller
     public function index()
     {
         $alumni = Alumni::all(); // Ambil semua data alumni
+
         return view('admin.alumni.index', compact('alumni'));
     }
 
@@ -33,7 +34,6 @@ class AlumniController extends Controller
     /**
      * Menyimpan alumni baru ke database.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -62,7 +62,6 @@ class AlumniController extends Controller
     /**
      * Menampilkan detail alumni.
      *
-     * @param  \App\Models\Alumni  $alumni
      * @return \Illuminate\View\View
      */
     public function show(Alumni $alumni)
@@ -73,7 +72,6 @@ class AlumniController extends Controller
     /**
      * Menampilkan form untuk mengedit alumni.
      *
-     * @param  \App\Models\Alumni  $alumni
      * @return \Illuminate\View\View
      */
     public function edit(Alumni $alumni)
@@ -84,8 +82,6 @@ class AlumniController extends Controller
     /**
      * Memperbarui alumni yang ada.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Alumni  $alumni
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Alumni $alumni)
@@ -94,7 +90,7 @@ class AlumniController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
-            'email' => 'required|email|unique:alumni,email,' . $alumni->id,
+            'email' => 'required|email|unique:alumni,email,'.$alumni->id,
             'address' => 'nullable|string',
             'almamater' => 'required|string|max:255',
             'picture_upload' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -120,7 +116,6 @@ class AlumniController extends Controller
     /**
      * Menghapus alumni dari database.
      *
-     * @param  \App\Models\Alumni  $alumni
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Alumni $alumni)

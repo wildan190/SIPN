@@ -12,6 +12,7 @@ class Post extends Model
 
     // Menonaktifkan auto-increment untuk ID dan memastikan key type adalah string
     public $incrementing = false;
+
     protected $keyType = 'string';
 
     // Generate UUID secara otomatis saat model dibuat
@@ -20,7 +21,7 @@ class Post extends Model
         parent::booted();
 
         static::creating(function ($post) {
-            if (!$post->getKey()) {
+            if (! $post->getKey()) {
                 $post->id = (string) Str::uuid();
             }
         });

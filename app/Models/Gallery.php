@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
 
 class Gallery extends Model
 {
@@ -13,6 +13,7 @@ class Gallery extends Model
 
     // Pastikan untuk menambahkan properti `incrementing` dan `keyType`
     public $incrementing = false;  // Menonaktifkan auto-increment untuk ID
+
     protected $keyType = 'string'; // Set key type menjadi string, karena UUID adalah string
 
     protected static function booted()
@@ -21,7 +22,7 @@ class Gallery extends Model
 
         // Generate UUID saat model dibuat
         static::creating(function ($gallery) {
-            if (!$gallery->getKey()) {
+            if (! $gallery->getKey()) {
                 $gallery->id = (string) Str::uuid();  // Generate UUID untuk id
             }
         });

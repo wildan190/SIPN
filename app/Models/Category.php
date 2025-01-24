@@ -12,6 +12,7 @@ class Category extends Model
 
     // Pastikan untuk menambahkan properti `incrementing` dan `keyType`
     public $incrementing = false;  // Menonaktifkan auto-increment untuk ID
+
     protected $keyType = 'string'; // Set key type menjadi string, karena UUID adalah string
 
     protected static function booted()
@@ -20,7 +21,7 @@ class Category extends Model
 
         // Generate UUID saat model dibuat
         static::creating(function ($category) {
-            if (!$category->getKey()) {
+            if (! $category->getKey()) {
                 $category->id = (string) Str::uuid();  // Generate UUID untuk id
             }
         });
