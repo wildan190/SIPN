@@ -21,57 +21,59 @@
                         </a>
                     </div>
 
-                    <!-- Table -->
-                    <table class="table-auto w-full mt-6 text-gray-800 dark:text-gray-200">
-                        <thead>
-                            <tr class="bg-gray-100 dark:bg-gray-700">
-                                <th class="px-4 py-2">No.</th>
-                                <th class="px-4 py-2">Headline</th>
-                                <th class="px-4 py-2">Category</th>
-                                <th class="px-4 py-2">Status</th>
-                                <th class="px-4 py-2">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($posts as $post)
-                                <tr class="border-b border-gray-200 dark:border-gray-700">
-                                    <td class="px-4 py-2">{{ $loop->iteration }}</td>
-                                    <td class="px-4 py-2">{{ $post->headline }}</td>
-                                    <td class="px-4 py-2">{{ $post->category->name ?? 'N/A' }}</td>
-                                    <td class="px-4 py-2">
-                                        <span
-                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $post->status === 'published' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
-                                            {{ ucfirst($post->status) }}
-                                        </span>
-                                    </td>
-                                    <td class="px-4 py-2">
-                                        <a href="{{ route('admin.posts.show', $post) }}"
-                                            class="text-green-500 dark:text-green-400 hover:underline">
-                                            View
-                                        </a>
-                                        <a href="{{ route('admin.posts.edit', $post) }}"
-                                            class="text-blue-500 dark:text-blue-400 hover:underline">
-                                            Edit
-                                        </a>
-                                        <form action="{{ route('admin.posts.destroy', $post) }}" method="POST"
-                                            style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="text-red-500 dark:text-red-400 hover:underline"
-                                                onclick="return confirm('Are you sure?')">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </td>
+                    <!-- Table with Horizontal Scroll -->
+                    <div class="overflow-x-auto">
+                        <table class="table-auto w-full mt-6 text-gray-800 dark:text-gray-200">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-gray-700">
+                                    <th class="px-4 py-2">No.</th>
+                                    <th class="px-4 py-2">Headline</th>
+                                    <th class="px-4 py-2">Category</th>
+                                    <th class="px-4 py-2">Status</th>
+                                    <th class="px-4 py-2">Actions</th>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="5" class="text-center px-4 py-2">No posts found.</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @forelse ($posts as $post)
+                                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                                        <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                                        <td class="px-4 py-2">{{ $post->headline }}</td>
+                                        <td class="px-4 py-2">{{ $post->category->name ?? 'N/A' }}</td>
+                                        <td class="px-4 py-2">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $post->status === 'published' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                                {{ ucfirst($post->status) }}
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-2">
+                                            <a href="{{ route('admin.posts.show', $post) }}"
+                                                class="text-green-500 dark:text-green-400 hover:underline">
+                                                View
+                                            </a>
+                                            <a href="{{ route('admin.posts.edit', $post) }}"
+                                                class="text-blue-500 dark:text-blue-400 hover:underline">
+                                                Edit
+                                            </a>
+                                            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST"
+                                                style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="text-red-500 dark:text-red-400 hover:underline"
+                                                    onclick="return confirm('Are you sure?')">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center px-4 py-2">No posts found.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

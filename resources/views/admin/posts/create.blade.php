@@ -21,12 +21,14 @@
 
                         <!-- Headline -->
                         <div class="mb-4">
-                            <label for="headline" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            <label for="headline" class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                style="font-size: 14px;">
                                 Headline
                             </label>
                             <input type="text" name="headline" id="headline"
                                 class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500"
-                                value="{{ old('headline') }}" placeholder="Masukan Headline" required>
+                                style="border-color: #ccc; padding: 10px;" value="{{ old('headline') }}"
+                                placeholder="Masukan Headline" required>
                             @error('headline')
                                 <span class="text-sm text-red-500">{{ $message }}</span>
                             @enderror
@@ -34,11 +36,13 @@
 
                         <!-- Category -->
                         <div class="mb-4">
-                            <label for="category_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            <label for="category_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                style="font-size: 14px;">
                                 Category
                             </label>
                             <select name="category_id" id="category_id"
-                                class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">
+                                class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500"
+                                style="border-color: #ccc; padding: 10px;">
                                 <option value="">{{ __('Select a category') }}</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
@@ -54,12 +58,13 @@
 
                         <!-- Content -->
                         <div class="mb-4">
-                            <label for="content" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            <label for="content" class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                style="font-size: 14px;">
                                 Content
                             </label>
                             <textarea name="content" id="content" rows="6"
                                 class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500"
-                                required>{{ old('content') }}</textarea>
+                                style="border-color: #ccc; padding: 10px;" required>{{ old('content') }}</textarea>
                             @error('content')
                                 <span class="text-sm text-red-500">{{ $message }}</span>
                             @enderror
@@ -67,12 +72,13 @@
 
                         <!-- Slug -->
                         <div class="mb-4">
-                            <label for="slug" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            <label for="slug" class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                style="font-size: 14px;">
                                 Slug
                             </label>
                             <input type="text" name="slug" id="slug"
                                 class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500"
-                                value="{{ old('slug') }}" required>
+                                style="border-color: #ccc; padding: 10px;" value="{{ old('slug') }}" required>
                             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">The slug will be used in the post
                                 URL.</p>
                             @error('slug')
@@ -82,11 +88,13 @@
 
                         <!-- Picture Upload -->
                         <div class="mb-4">
-                            <label for="picture" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            <label for="picture" class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                style="font-size: 14px;">
                                 Upload Picture
                             </label>
                             <input type="file" name="picture_upload" id="picture"
-                                class="mt-1 block w-full text-gray-700 dark:text-gray-300 dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500">
+                                class="mt-1 block w-full text-gray-700 dark:text-gray-300 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
+                                style="border-color: #ccc; padding: 10px;">
                             @error('picture')
                                 <span class="text-sm text-red-500">{{ $message }}</span>
                             @enderror
@@ -94,11 +102,13 @@
 
                         <!-- Status -->
                         <div class="mb-4">
-                            <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                style="font-size: 14px;">
                                 Status
                             </label>
                             <select name="status" id="status"
-                                class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">
+                                class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500"
+                                style="border-color: #ccc; padding: 10px;">
                                 <option value="draft" {{ old('status', 'draft') == 'draft' ? 'selected' : '' }}>
                                     Draft
                                 </option>

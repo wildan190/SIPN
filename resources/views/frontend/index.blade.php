@@ -18,30 +18,66 @@
     <!-- Navbar -->
     <nav class="bg-transparent text-white py-6 w-full z-50">
         <div class="container mx-auto px-4 sm:px-8 flex justify-between items-center">
+            <!-- Logo -->
             <a href="{{ route('home') }}" class="text-3xl font-semibold text-green-700">Nurul Iman</a>
-            <ul class="flex space-x-6">
-                <li>
-                    <a href="#about" class="hover:text-green-500 transition">About</a>
-                </li>
-                <li>
-                    <a href="#posts" class="hover:text-green-500 transition">Post</a>
-                </li>
-                <li>
-                    <a href="#events" class="hover:text-green-500 transition">Events</a>
-                </li>
-                <li>
-                    <a href="#gallery" class="hover:text-green-500 transition">Gallery</a>
-                </li>
-                <li>
-                    <a href="#alumni" class="hover:text-green-500 transition">Alumni</a>
-                </li>
-                <li>
-                    <a href="#contact" class="hover:text-green-500 transition">Contact</a>
-                </li>
+
+            <!-- Hamburger Icon (Visible only on mobile) -->
+            <button class="block lg:hidden text-white focus:outline-none" id="hamburger-btn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Desktop Navbar Links -->
+            <ul class="lg:flex space-x-6 hidden lg:flex-row">
+                <li><a href="#about" class="hover:text-green-500 transition">About</a></li>
+                <li><a href="#posts" class="hover:text-green-500 transition">Post</a></li>
+                <li><a href="#events" class="hover:text-green-500 transition">Events</a></li>
+                <li><a href="#gallery" class="hover:text-green-500 transition">Gallery</a></li>
+                <li><a href="#alumni" class="hover:text-green-500 transition">Alumni</a></li>
+                <li><a href="#contact" class="hover:text-green-500 transition">Contact</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Sidebar (Hidden on larger screens, visible on mobile) -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" id="sidebar-overlay"></div>
+
+    <!-- Sidebar Links (Hidden on larger screens, appears from right) -->
+    <div class="fixed inset-y-0 right-0 text-white w-64 transform translate-x-full transition-transform z-50"
+        id="sidebar" style="background: linear-gradient(180deg, rgba(0, 0, 128, 0.8), rgba(0, 0, 139, 0.7));">
+        <div class="flex justify-end p-4">
+            <button id="close-sidebar" class="text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex flex-col space-y-0 p-4">
+            <li><a href="#about"
+                    class="block w-full hover:bg-green-600 px-6 py-3 rounded-lg border-b-2 border-green-500 transition-all">About</a>
+            </li>
+            <li><a href="#posts"
+                    class="block w-full hover:bg-green-600 px-6 py-3 rounded-lg border-b-2 border-green-500 transition-all">Post</a>
+            </li>
+            <li><a href="#events"
+                    class="block w-full hover:bg-green-600 px-6 py-3 rounded-lg border-b-2 border-green-500 transition-all">Events</a>
+            </li>
+            <li><a href="#gallery"
+                    class="block w-full hover:bg-green-600 px-6 py-3 rounded-lg border-b-2 border-green-500 transition-all">Gallery</a>
+            </li>
+            <li><a href="#alumni"
+                    class="block w-full hover:bg-green-600 px-6 py-3 rounded-lg border-b-2 border-green-500 transition-all">Alumni</a>
+            </li>
+            <li><a href="#contact"
+                    class="block w-full hover:bg-green-600 px-6 py-3 rounded-lg border-b-2 border-green-500 transition-all">Contact</a>
+            </li>
+        </ul>
+    </div>
     <!-- Hero Section -->
     <section class="h-screen bg-cover bg-center flex items-center justify-center text-white text-center px-4 sm:px-8"
         style="background-image: url('https://www.example.com/hero-image.jpg')">
@@ -287,42 +323,46 @@
                     <!-- Phone -->
                     <li class="flex items-center text-gray-700">
                         <i class="fas fa-phone-alt text-green-700 mr-4"></i>
-                        <span>+62 812 3456 7890</span>
+                        <a href="https://wa.me/62811144793" class="text-green-700 hover:text-green-900"
+                            target="_blank">+62 811 144 793
+                        </a>
                     </li>
 
                     <!-- Email -->
                     <li class="flex items-center text-gray-700">
                         <i class="fas fa-envelope text-green-700 mr-4"></i>
-                        <span>contact@nuruliman.com</span>
+                        <a href="mailto:contact@nuruliman.com"
+                            class="text-green-700 hover:text-green-900">contact@nuruliman.com</a>
                     </li>
 
                     <!-- Address -->
                     <li class="flex items-center text-gray-700">
                         <i class="fas fa-map-marker-alt text-green-700 mr-4"></i>
-                        <span>Jl. Raya No. 123, Kota XYZ, Indonesia</span>
+                        <span>Jl. Profesor Dr. Insinyur Soetami, Kp. Malangnengah, Cijoro Pasir, Rangkasbitung</span>
                     </li>
 
                     <!-- City -->
                     <li class="flex items-center text-gray-700">
                         <i class="fas fa-city text-green-700 mr-4"></i>
-                        <span>Kota XYZ, Indonesia</span>
+                        <span>Lebak, Banten</span>
                     </li>
 
                     <!-- Postal Code -->
                     <li class="flex items-center text-gray-700">
                         <i class="fas fa-mail-bulk text-green-700 mr-4"></i>
-                        <span>12345</span>
+                        <span>42316</span>
                     </li>
 
                     <!-- Social Media -->
                     <li class="flex items-center text-gray-700 space-x-6">
-                        <a href="#" class="text-gray-700 hover:text-green-700">
+                        <a href="#" class="text-gray-700 hover:text-green-700" target="_blank">
                             <i class="fab fa-facebook-square text-2xl"></i>
                         </a>
-                        <a href="#" class="text-gray-700 hover:text-green-700">
+                        <a href="#" class="text-gray-700 hover:text-green-700" target="_blank">
                             <i class="fab fa-twitter-square text-2xl"></i>
                         </a>
-                        <a href="#" class="text-gray-700 hover:text-green-700">
+                        <a href="https://www.instagram.com/nurulimanoffical" target="_blank"
+                            class="text-gray-700 hover:text-green-700">
                             <i class="fab fa-instagram text-2xl"></i>
                         </a>
                     </li>
@@ -360,10 +400,12 @@
                 <a href="#" class="text-white hover:text-green-400 mx-4 text-3xl transition duration-300">
                     <i class="fab fa-twitter-square"></i>
                 </a>
-                <a href="#" class="text-white hover:text-green-400 mx-4 text-3xl transition duration-300">
+                <a href="https://www.instagram.com/nurulimanoffical"
+                    class="text-white hover:text-green-400 mx-4 text-3xl transition duration-300" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="text-white hover:text-green-400 mx-4 text-3xl transition duration-300">
+                <a href="https://youtube.com/@nurulimangaskubgabungansan501?si=fcr6C8Idx-UrE0vx"
+                    class="text-white hover:text-green-400 mx-4 text-3xl transition duration-300" target="_blank">
                     <i class="fab fa-youtube"></i>
                 </a>
             </div>
@@ -377,5 +419,28 @@
         </div>
     </footer>
 </body>
+
+<!-- Add JavaScript to toggle the sidebar -->
+<script>
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+    const closeSidebar = document.getElementById('close-sidebar');
+
+    hamburgerBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('translate-x-full');
+        sidebarOverlay.classList.toggle('hidden');
+    });
+
+    closeSidebar.addEventListener('click', () => {
+        sidebar.classList.add('translate-x-full');
+        sidebarOverlay.classList.add('hidden');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+        sidebar.classList.add('translate-x-full');
+        sidebarOverlay.classList.add('hidden');
+    });
+</script>
 
 </html>
