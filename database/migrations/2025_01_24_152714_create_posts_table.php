@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Menambahkan foreign key untuk kategori
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('uuid')->on('categories')->onDelete('cascade');
         });
     }
 
