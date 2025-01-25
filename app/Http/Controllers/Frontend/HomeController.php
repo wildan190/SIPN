@@ -12,8 +12,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Ambil 3 post terbaru
-        $posts = Post::latest()->take(3)->get();
+        // Ambil 3 post terbaru dengan status published
+        $posts = Post::where('status', 'published')
+            ->latest()
+            ->take(3)
+            ->get();
 
         // Ambil event yang akan datang dalam 7 hari
         $upcomingEvents = Event::where('date', '>', now())

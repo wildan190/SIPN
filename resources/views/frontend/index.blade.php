@@ -233,7 +233,7 @@
 
 
     <!-- Get in Touch Section -->
-    <section id="get-in-touch" class="py-16 bg-gradient-to-r from-green-800 via-green-900 to-blue-700 px-4 sm:px-8">
+    <section id="contact" class="py-16 bg-gradient-to-r from-green-800 via-green-900 to-blue-700 px-4 sm:px-8">
         <h2 class="text-4xl font-bold text-white text-center mb-12">
             Hubungi Kami
         </h2>
