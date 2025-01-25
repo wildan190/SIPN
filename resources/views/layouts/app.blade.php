@@ -16,7 +16,7 @@
     {{-- <link href="{{ mix('css/app.css') }}" rel="stylesheet"> --}}
 
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
     <!-- Styles -->
     @livewireStyles
