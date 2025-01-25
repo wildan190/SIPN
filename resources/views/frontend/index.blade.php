@@ -194,88 +194,43 @@
     <!-- Alumni Kami Section -->
     <section id="alumni"
         class="py-16 bg-gradient-to-r from-green-100 via-green-200 to-blue-300 text-center px-4 sm:px-8">
-        <h2 class="text-4xl font-bold text-green-700 mb-8">Alumni Kami</h2>
+        <h2 class="text-4xl font-bold text-green-700 mb-12">Alumni Kami</h2>
 
         <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Alumni Card 1 -->
-            <div
-                class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                <img src="https://via.placeholder.com/300x300" alt="Alumni Image" class="w-full h-56 object-cover" />
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-green-700">Nama Alumni 1</h3>
-                    <p class="text-gray-600 mt-2">
-                        Lulusan dari program studi Tafsiran Al-Qur'an, kini bekerja
-                        sebagai dosen di universitas terkemuka.
-                    </p>
-                </div>
-            </div>
+            <!-- Alumni Card -->
+            @foreach ($alumni as $alumnus)
+                <div
+                    class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <!-- Avatar Image -->
+                    <div class="flex justify-center">
+                        <img src="{{ $alumnus->picture_upload ? asset('storage/' . $alumnus->picture_upload) : 'https://via.placeholder.com/150' }}"
+                            alt="Alumni Image"
+                            class="w-32 h-32 object-cover rounded-full border-4 border-white shadow-md mt-8 mb-4" />
+                    </div>
 
-            <!-- Alumni Card 2 -->
-            <div
-                class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                <img src="https://via.placeholder.com/300x300" alt="Alumni Image" class="w-full h-56 object-cover" />
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-green-700">Nama Alumni 2</h3>
-                    <p class="text-gray-600 mt-2">
-                        Lulusan dari jurusan Ekonomi Islam, bekerja sebagai manajer di
-                        perusahaan internasional.
-                    </p>
-                </div>
-            </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-green-700">{{ $alumnus->name }}</h3>
+                        <p class="text-gray-600 mt-2 mb-4">
+                            <i class="fas fa-phone-alt text-green-700 mr-2"></i>{{ $alumnus->phone }} <br>
+                            <i class="fas fa-envelope text-green-700 mr-2"></i>{{ $alumnus->email }} <br>
+                            <i class="fas fa-university text-green-700 mr-2"></i>{{ $alumnus->almamater }}
+                        </p>
 
-            <!-- Alumni Card 3 -->
-            <div
-                class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                <img src="https://via.placeholder.com/300x300" alt="Alumni Image" class="w-full h-56 object-cover" />
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-green-700">Nama Alumni 3</h3>
-                    <p class="text-gray-600 mt-2">
-                        Lulusan jurusan Pendidikan Agama, kini aktif mengajar di
-                        sekolah-sekolah di seluruh Indonesia.
-                    </p>
+                        <!-- Optional: Social Media or Contact Buttons -->
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="text-green-700 hover:text-green-900"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-green-700 hover:text-green-900"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-green-700 hover:text-green-900"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Alumni Card 4 -->
-            <div
-                class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                <img src="https://via.placeholder.com/300x300" alt="Alumni Image" class="w-full h-56 object-cover" />
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-green-700">Nama Alumni 4</h3>
-                    <p class="text-gray-600 mt-2">
-                        Menggeluti dunia kewirausahaan, sekarang memiliki bisnis yang
-                        berkembang pesat di bidang pendidikan.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Alumni Card 5 -->
-            <div
-                class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                <img src="https://via.placeholder.com/300x300" alt="Alumni Image" class="w-full h-56 object-cover" />
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-green-700">Nama Alumni 5</h3>
-                    <p class="text-gray-600 mt-2">
-                        Bekerja di bidang teknologi, mengembangkan aplikasi berbasis
-                        Islami untuk membantu umat.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Alumni Card 6 -->
-            <div
-                class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                <img src="https://via.placeholder.com/300x300" alt="Alumni Image" class="w-full h-56 object-cover" />
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-green-700">Nama Alumni 6</h3>
-                    <p class="text-gray-600 mt-2">
-                        Lulusan dari jurusan Ilmu Komunikasi, kini menjadi jurnalis di
-                        media ternama.
-                    </p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
+
 
     <!-- Get in Touch Section -->
     <section id="get-in-touch" class="py-16 bg-gradient-to-r from-green-800 via-green-900 to-blue-700 px-4 sm:px-8">
@@ -289,7 +244,8 @@
                 <h3 class="text-2xl font-semibold text-green-700 mb-6">
                     Kirim Pesan
                 </h3>
-                <form action="#" method="POST">
+                <form action="{{ route('send.message') }}" method="POST">
+                    @csrf
                     <!-- Name Field -->
                     <div class="mb-6">
                         <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
