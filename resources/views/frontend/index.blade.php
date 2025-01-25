@@ -18,7 +18,7 @@
     <!-- Navbar -->
     <nav class="bg-transparent text-white py-6 w-full z-50">
         <div class="container mx-auto px-4 sm:px-8 flex justify-between items-center">
-            <a href="#" class="text-3xl font-semibold text-green-700">Nurul Iman</a>
+            <a href="{{ route('home') }}" class="text-3xl font-semibold text-green-700">Nurul Iman</a>
             <ul class="flex space-x-6">
                 <li>
                     <a href="#about" class="hover:text-green-500 transition">About</a>
