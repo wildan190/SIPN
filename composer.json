@@ -13,7 +13,7 @@
         "laravel/telescope": "^5.3",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.0",
-        "predis/predis": "*"
+        "predis/predis": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

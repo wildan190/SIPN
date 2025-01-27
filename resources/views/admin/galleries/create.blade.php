@@ -22,7 +22,7 @@
                             {{ __('Headline') }}
                         </label>
                         <input type="text" id="headline" name="headline" value="{{ old('headline') }}"
-                            placeholder="Gallery Headline"
+                            placeholder="Gallery Headline" style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 
                                text-gray-800 dark:text-gray-200 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 
                                dark:focus:ring-green-700">
@@ -36,7 +36,7 @@
                         <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             {{ __('Description') }}
                         </label>
-                        <textarea id="description" name="description" rows="4"
+                        <textarea id="description" name="description" rows="4" style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 
                                   text-gray-800 dark:text-gray-200 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 
                                   dark:focus:ring-green-700">{{ old('description') }}</textarea>
@@ -50,7 +50,7 @@
                         <label for="date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             {{ __('Date') }}
                         </label>
-                        <input type="date" id="date" name="date" value="{{ old('date') }}"
+                        <input type="date" id="date" name="date" value="{{ old('date') }}" style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 
                                text-gray-800 dark:text-gray-200 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 
                                dark:focus:ring-green-700">
@@ -64,7 +64,7 @@
                         <label for="picture_upload" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             {{ __('Upload Gallery Picture') }}
                         </label>
-                        <input type="file" id="picture_upload" name="picture_upload"
+                        <input type="file" id="picture_upload" name="picture_upload" style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full text-gray-700 dark:text-gray-300 dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:ring-green-500 focus:border-green-500">
                         @error('picture_upload')
                             <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
