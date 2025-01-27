@@ -1,46 +1,61 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: laravel_app
-    volumes:
-      - .:/var/www/html
-      - ./storage:/var/www/html/storage
-    ports:
-      - "8080"
-    depends_on:
-      - postgres
-      - redis
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: laravel_app
+        volumes:
+            - .:/var/www/html
+            - ./storage:/var/www/html/storage
+        ports:
+            - "8080"
+        depends_on:
+            - postgres
+            - redis
 
-  postgres:
-    image: postgres:15
-    container_name: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: manchester
-      POSTGRES_DB: laravel
-    ports:
-      - "5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    queue-worker:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: laravel_queue_worker
+        volumes:
+            - .:/var/www/html
+            - ./storage:/var/www/html/storage
+        environment:
+            - QUEUE_CONNECTION=redis
+        command: php artisan queue:work --tries=3
+        depends_on:
+            - app
+            - redis
 
-  redis:
-    image: redis:7
-    container_name: redis
-    ports:
-      - "6379"
+    postgres:
+        image: postgres:15
+        container_name: postgres
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: manchester
+            POSTGRES_DB: laravel
+        ports:
+            - "5432"
+        volumes:
+            - pgdata:/var/lib/postgresql/data
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - .:/var/www/html
-    ports:
-      - "8080:80"
-    depends_on:
-      - app
+    redis:
+        image: redis:7
+        container_name: redis
+        ports:
+            - "6379"
+
+    nginx:
+        image: nginx:latest
+        container_name: nginx
+        volumes:
+            - ./nginx:/etc/nginx/conf.d
+            - .:/var/www/html
+        ports:
+            - "8080:80"
+        depends_on:
+            - app
 
 volumes:
-  pgdata:
+    pgdata:
