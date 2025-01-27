@@ -28,7 +28,7 @@
                             </label>
                             <input type="text" name="headline" id="headline"
                                 class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500"
-                                value="{{ old('headline', $post->headline) }}" placeholder="Masukan Headline" required>
+                                value="{{ old('headline', $post->headline) }}" placeholder="Masukan Headline" style="border-color: #ccc; padding: 10px;" required>
                             @error('headline')
                                 <span class="text-sm text-red-500">{{ $message }}</span>
                             @enderror

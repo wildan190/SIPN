@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendContactEmail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -21,13 +21,9 @@ class ContactController extends Controller
             'message' => $request->message,
         ];
 
-        Mail::send('emails.contact', ['data' => $data], function ($message) use ($data) {
-            $message->to('info@nuruliman.com') // Replace with your email
-                ->subject('New Contact Message')
-                ->replyTo($data['email']);
-        });
+        // Dispatch the job to the queue (Redis will handle it)
+        SendContactEmail::dispatch($data);
 
-
-        return back()->with('success', 'Pesan berhasil dikirim!');
+        return back()->with('success', 'Pesan berhasil dikirim! Kami akan merespon secepatnya.');
     }
 }
