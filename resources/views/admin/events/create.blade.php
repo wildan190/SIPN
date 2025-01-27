@@ -22,7 +22,7 @@
                             {{ __('Headline') }}
                         </label>
                         <input type="text" id="headline" name="headline" value="{{ old('headline') }}"
-                            placeholder="Event Headline"
+                            placeholder="Event Headline" style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 
                                text-gray-800 dark:text-gray-200 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 
                                dark:focus:ring-green-700">
@@ -37,7 +37,7 @@
                             {{ __('Event Name') }}
                         </label>
                         <input type="text" id="event_name" name="event_name" value="{{ old('event_name') }}"
-                            placeholder="Event Name"
+                            placeholder="Event Name" style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 
                                text-gray-800 dark:text-gray-200 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 
                                dark:focus:ring-green-700">
@@ -52,7 +52,7 @@
                             {{ __('Location') }}
                         </label>
                         <input type="text" id="location" name="location" value="{{ old('location') }}"
-                            placeholder="Event Location"
+                            placeholder="Event Location" style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 
                                text-gray-800 dark:text-gray-200 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 
                                dark:focus:ring-green-700">
@@ -67,6 +67,7 @@
                             {{ __('Date') }}
                         </label>
                         <input type="date" id="date" name="date" value="{{ old('date') }}"
+                        style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 
                                text-gray-800 dark:text-gray-200 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 
                                dark:focus:ring-green-700">
@@ -81,6 +82,7 @@
                             {{ __('Time') }}
                         </label>
                         <input type="time" id="time" name="time" value="{{ old('time') }}"
+                        style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 
                                text-gray-800 dark:text-gray-200 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 
                                dark:focus:ring-green-700">
@@ -95,7 +97,7 @@
                             class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             {{ __('Event Description') }}
                         </label>
-                        <textarea id="event_description" name="event_description" rows="4"
+                        <textarea id="event_description" name="event_description" rows="4" style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 
                                   text-gray-800 dark:text-gray-200 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 
                                   dark:focus:ring-green-700">{{ old('event_description') }}</textarea>
@@ -109,7 +111,7 @@
                         <label for="picture_upload" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             {{ __('Upload Event Picture') }}
                         </label>
-                        <input type="file" id="picture_upload" name="picture_upload"
+                        <input type="file" id="picture_upload" name="picture_upload" style="border-color: #ccc; padding: 10px;"
                             class="mt-1 block w-full text-gray-700 dark:text-gray-300 dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:ring-green-500 focus:border-green-500">
                         @error('picture_upload')
                             <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
