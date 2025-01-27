@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->uuid()->primary(); // ID Primary Key
+            $table->uuid('id')->primary(); // ID Primary Key
             $table->string('name'); // Kolom name
             $table->text('description')->nullable(); // Kolom description (nullable)
             $table->timestamps(); // Kolom created_at dan updated_at
