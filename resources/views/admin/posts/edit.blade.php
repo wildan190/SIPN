@@ -28,7 +28,9 @@
                             </label>
                             <input type="text" name="headline" id="headline"
                                 class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500"
-                                value="{{ old('headline', $post->headline) }}" placeholder="Masukan Headline" style="border-color: #ccc; padding: 10px;" required>
+                                style="border-color: #ccc; padding: 10px;"
+                                value="{{ old('headline', $post->headline) }}" placeholder="Masukan Headline"
+                                style="border-color: #ccc; padding: 10px;" required>
                             @error('headline')
                                 <span class="text-sm text-red-500">{{ $message }}</span>
                             @enderror
@@ -39,7 +41,7 @@
                             <label for="category_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 Category
                             </label>
-                            <select name="category_id" id="category_id"
+                            <select name="category_id" id="category_id" style="border-color: #ccc; padding: 10px;"
                                 class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="">{{ __('Select a category') }}</option>
                                 @foreach ($categories as $category)
@@ -59,7 +61,7 @@
                             <label for="content" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 Content
                             </label>
-                            <textarea name="content" id="content" rows="6"
+                            <textarea name="content" id="content" rows="6" style="border-color: #ccc; padding: 10px;"
                                 class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500"
                                 required>{{ old('content', $post->content) }}</textarea>
                             @error('content')
@@ -72,7 +74,8 @@
                             <label for="slug" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 Slug
                             </label>
-                            <input type="text" name="slug" id="slug"
+                            <input type="text" name="slug" id="slug" placeholder="Masukan Slug"
+                                style="border-color: #ccc; padding: 10px;"
                                 class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500"
                                 value="{{ old('slug', $post->slug) }}" required>
                             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">The slug will be used in the post
@@ -88,6 +91,7 @@
                                 Upload Picture
                             </label>
                             <input type="file" name="picture_upload" id="picture"
+                                style="border-color: #ccc; padding: 10px;"
                                 class="mt-1 block w-full text-gray-700 dark:text-gray-300 dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:ring-indigo-500 focus:border-indigo-500">
                             @error('picture')
                                 <span class="text-sm text-red-500">{{ $message }}</span>
@@ -99,7 +103,7 @@
                             <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 Status
                             </label>
-                            <select name="status" id="status"
+                            <select name="status" id="status" style="border-color: #ccc; padding: 10px;"
                                 class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="draft" {{ old('status', $post->status) == 'draft' ? 'selected' : '' }}>
                                     Draft
