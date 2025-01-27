@@ -2,13 +2,12 @@
 
 namespace App\Jobs;
 
-use App\Mail\ContactMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Mail\Mailer;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Bus\Dispatchable; // Pastikan ini ada
+use Illuminate\Queue\SerializesModels; // Pastikan ini ada
 
 class SendContactEmail implements ShouldQueue
 {
@@ -19,7 +18,7 @@ class SendContactEmail implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param array $data
+     * @param  array  $data
      * @return void
      */
     public function __construct($data)
