@@ -10,12 +10,10 @@ class Post extends Model
 {
     use HasFactory;
 
-    // Menonaktifkan auto-increment untuk ID dan memastikan key type adalah string
     public $incrementing = false;
 
     protected $keyType = 'string';
 
-    // Generate UUID secara otomatis saat model dibuat
     protected static function booted()
     {
         parent::booted();
@@ -27,7 +25,6 @@ class Post extends Model
         });
     }
 
-    // Kolom yang dapat diisi secara massal
     protected $fillable = [
         'headline',
         'category_id',
@@ -37,13 +34,11 @@ class Post extends Model
         'picture_upload',
     ];
 
-    // Relasi dengan model Category
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    // Accessor untuk slug
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = Str::slug($value);

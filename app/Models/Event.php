@@ -11,24 +11,21 @@ class Event extends Model
 {
     use HasFactory;
 
-    // Pastikan untuk menambahkan properti `incrementing` dan `keyType`
-    public $incrementing = false;  // Menonaktifkan auto-increment untuk ID
+    public $incrementing = false;
 
-    protected $keyType = 'string'; // Set key type menjadi string, karena UUID adalah string
+    protected $keyType = 'string';
 
     protected static function booted()
     {
         parent::booted();
 
-        // Generate UUID saat model dibuat
         static::creating(function ($event) {
             if (! $event->getKey()) {
-                $event->id = (string) Str::uuid();  // Generate UUID untuk id
+                $event->id = (string) Str::uuid();
             }
         });
     }
 
-    // Tentukan kolom yang dapat diisi secara massal
     protected $fillable = [
         'headline',
         'event_name',
@@ -36,16 +33,14 @@ class Event extends Model
         'date',
         'time',
         'event_description',
-        'picture_upload', // Kolom untuk gambar
+        'picture_upload',
     ];
 
-    // Format tanggal yang lebih mudah dibaca (Opsional)
     protected $dates = ['date'];
 
-    // Custom accessors untuk format waktu
     public function getDateAttribute($value)
     {
-        return Carbon::parse($value); // Mengonversi string tanggal menjadi instance Carbon
+        return Carbon::parse($value);
     }
 
     public function getFormattedTimeAttribute()
