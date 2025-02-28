@@ -10,24 +10,21 @@ class Category extends Model
 {
     use HasFactory;
 
-    // Pastikan untuk menambahkan properti `incrementing` dan `keyType`
-    public $incrementing = false;  // Menonaktifkan auto-increment untuk ID
+    public $incrementing = false;
 
-    protected $keyType = 'string'; // Set key type menjadi string, karena UUID adalah string
+    protected $keyType = 'string';
 
     protected static function booted()
     {
         parent::booted();
 
-        // Generate UUID saat model dibuat
         static::creating(function ($category) {
             if (! $category->getKey()) {
-                $category->id = (string) Str::uuid();  // Generate UUID untuk id
+                $category->id = (string) Str::uuid();
             }
         });
     }
 
-    // Tentukan kolom yang dapat diisi secara massal
     protected $fillable = [
         'name',
         'description',

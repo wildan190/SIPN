@@ -21,7 +21,6 @@ class ContactController extends Controller
             'message' => $request->message,
         ];
 
-        // Dispatch the job to the queue (Redis will handle it)
         SendContactEmail::dispatch($data);
 
         return back()->with('success', 'Pesan berhasil dikirim! Kami akan merespon secepatnya.');

@@ -11,33 +11,30 @@ class Alumni extends Model
 {
     use HasFactory;
 
-    protected $table = 'alumni'; // Tentukan nama tabel
+    protected $table = 'alumni';
 
-    // Pastikan untuk menambahkan properti `incrementing` dan `keyType`
-    public $incrementing = false;  // Menonaktifkan auto-increment untuk ID
+    public $incrementing = false;
 
-    protected $keyType = 'string'; // Set key type menjadi string, karena UUID adalah string
+    protected $keyType = 'string';
 
     protected static function booted()
     {
         parent::booted();
 
-        // Generate UUID saat model dibuat
         static::creating(function ($alumni) {
             if (! $alumni->getKey()) {
-                $alumni->id = (string) Str::uuid();  // Generate UUID untuk id
+                $alumni->id = (string) Str::uuid();
             }
         });
     }
 
-    // Tentukan kolom yang dapat diisi secara massal
     protected $fillable = [
         'name',
         'phone',
         'email',
         'address',
         'almamater',
-        'picture_upload', // Kolom untuk gambar
+        'picture_upload',
     ];
 
     // // Menambahkan pengaturan untuk pengunggahan gambar

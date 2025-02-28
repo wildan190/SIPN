@@ -16,7 +16,7 @@ class AlumniController extends Controller
      */
     public function index()
     {
-        $alumni = Alumni::all(); // Ambil semua data alumni
+        $alumni = Alumni::all();
 
         return view('admin.alumni.index', compact('alumni'));
     }
@@ -48,12 +48,10 @@ class AlumniController extends Controller
             'picture_upload' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Menangani upload gambar jika ada
         if ($request->hasFile('picture_upload')) {
             $validated['picture_upload'] = $request->file('picture_upload')->store('alumni_images', 'public');
         }
 
-        // Membuat alumni baru
         Alumni::create($validated);
 
         return redirect()->route('admin.alumni.index')->with('success', 'Alumni created successfully.');
@@ -86,28 +84,23 @@ class AlumniController extends Controller
      */
     public function update(Request $request, Alumni $alumni)
     {
-        // Validasi input
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
-            'email' => 'required|email|unique:alumni,email,'.$alumni->id,
+            'email' => 'required|email|unique:alumni,email,' . $alumni->id,
             'address' => 'nullable|string',
             'almamater' => 'required|string|max:255',
             'picture_upload' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Menangani upload gambar jika ada
         if ($request->hasFile('picture_upload')) {
-            // Hapus gambar lama jika ada
             if ($alumni->picture_upload && Storage::disk('public')->exists($alumni->picture_upload)) {
                 Storage::disk('public')->delete($alumni->picture_upload);
             }
 
-            // Simpan gambar baru
             $validated['picture_upload'] = $request->file('picture_upload')->store('alumni_images', 'public');
         }
 
-        // Update alumni
         $alumni->update($validated);
 
         return redirect()->route('admin.alumni.index')->with('success', 'Alumni updated successfully.');
@@ -120,12 +113,10 @@ class AlumniController extends Controller
      */
     public function destroy(Alumni $alumni)
     {
-        // Hapus gambar jika ada
         if ($alumni->picture_upload && Storage::disk('public')->exists($alumni->picture_upload)) {
             Storage::disk('public')->delete($alumni->picture_upload);
         }
 
-        // Hapus alumni
         $alumni->delete();
 
         return redirect()->route('admin.alumni.index')->with('success', 'Alumni deleted successfully.');
