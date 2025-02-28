@@ -14,6 +14,7 @@ class Gallery extends Model
     public $incrementing = false;
 
     protected $keyType = 'string';
+
     protected static function booted()
     {
         parent::booted();

@@ -65,19 +65,16 @@ class PostController extends Controller
             'picture_upload' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Handle file upload
         if ($request->hasFile('picture_upload')) {
-            // Delete the old picture if it exists
+
             if ($post->picture_upload && Storage::disk('public')->exists($post->picture_upload)) {
                 Storage::disk('public')->delete($post->picture_upload);
             }
 
-            // Save the new picture
-            $path = $request->file('picture_upload')->store('posts', 'public'); // Simpan ke storage/public/posts
-            $validated['picture_upload'] = $path; // Simpan path baru ke database
+            $path = $request->file('picture_upload')->store('posts', 'public');
+            $validated['picture_upload'] = $path;
         }
 
-        // Update the post
         $post->update($validated);
 
         return redirect()->route('admin.posts.index')->with('success', 'Post updated successfully.');

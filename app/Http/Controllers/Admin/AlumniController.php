@@ -87,7 +87,7 @@ class AlumniController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
-            'email' => 'required|email|unique:alumni,email,' . $alumni->id,
+            'email' => 'required|email|unique:alumni,email,'.$alumni->id,
             'address' => 'nullable|string',
             'almamater' => 'required|string|max:255',
             'picture_upload' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
